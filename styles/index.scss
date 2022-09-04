@@ -1,0 +1,11 @@
+@use "app";
+@use "board";
+
+.lc4 {
+  &,
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+}

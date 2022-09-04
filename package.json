@@ -1,0 +1,21 @@
+{
+  "name": "lizardis-connect-four",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sass": "sass styles/index.scss dist/styles.css -w",
+    "esbuild": "esbuild --bundle --format=iife src/main.tsx --outfile=dist/lizardis-connect-four.js --watch"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.6",
+    "@types/react-dom": "^18.0.2",
+    "sass": "^1.50.0",
+    "typescript": "^4.8.2",
+    "esbuild": "^0.15.6"
+  }
+}

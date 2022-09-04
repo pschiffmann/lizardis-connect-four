@@ -1,0 +1,68 @@
+@use "sass:math";
+
+$_tile-size: 64px;
+
+.lc4-board {
+  display: grid;
+  grid: repeat(7, $_tile-size) / repeat(7, $_tile-size);
+  place-items: center;
+
+  &__drop-affordance {
+    grid-area: 1 / var(--lc4-column) / span 1 / span 1;
+    pointer-events: none;
+  }
+
+  &__column-highlight {
+    grid-area: 1 / var(--lc4-column) / span 7 / span 1;
+    place-self: stretch;
+
+    &:hover {
+      background: green;
+    }
+  }
+
+  &__token {
+    grid-area: calc(7 - var(--lc4-row)) / calc(var(--lc4-column) + 1) / span 1 /
+      span 1;
+    pointer-events: none;
+    animation: lc4-board-token-drop calc((7 - var(--lc4-row)) * 100ms) linear
+      both;
+  }
+
+  &__wall {
+    margin: -8px;
+    border: 8px solid lightblue;
+    border-radius: 8px;
+
+    grid-area: 2 / 1 / span 6 / span 7;
+    display: grid;
+    grid: repeat(6, $_tile-size) / repeat(7, $_tile-size);
+
+    pointer-events: none;
+  }
+
+  &__tile {
+    overflow: hidden;
+
+    &::before {
+      $margin: 8px;
+
+      display: block;
+      width: 3 * $_tile-size - 2 * $margin;
+      height: 3 * $_tile-size - 2 * $margin;
+      border: $_tile-size solid lightblue;
+      border-radius: 50%;
+      content: "";
+      transform: translate(-$_tile-size + $margin, -$_tile-size + $margin);
+    }
+  }
+}
+
+@keyframes lc4-board-token-drop {
+  from {
+    transform: translateY(calc(#{-$_tile-size} * (6 - var(--lc4-row))));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
