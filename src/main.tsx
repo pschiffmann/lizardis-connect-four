@@ -16,6 +16,7 @@ interface VisualizationExtensionMethods<S> {
 
 interface ConnectFourComponentState {
   root: Root;
+  themePromise: Promise<any>;
   readonly backendApi: any;
 }
 
@@ -23,12 +24,12 @@ define<ConnectFourComponentState>(["qlik", "css!./styles.css"], (qlik) => ({
   mounted($element) {
     initializeProperties(this.backendApi);
     const app = qlik.currApp(this);
+    this.themePromise = app.theme.getApplied();
     this.root = createRoot($element[0]);
   },
 
   async paint($element, layout) {
-    console.log("paint", layout);
-    this.root.render(<App layout={layout} />);
+    this.root.render(<App layout={layout} themePromise={this.themePromise} />);
   },
 
   destroy() {

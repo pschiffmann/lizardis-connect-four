@@ -17,7 +17,7 @@ $_tile-size: 64px;
     place-self: stretch;
 
     &:hover {
-      background: green;
+      background: var(--lc4-theme-color-data-selection);
     }
   }
 
@@ -31,7 +31,7 @@ $_tile-size: 64px;
 
   &__wall {
     margin: -8px;
-    border: 8px solid lightblue;
+    border: 8px solid var(--lc4-theme-color-ui-6);
     border-radius: 8px;
 
     grid-area: 2 / 1 / span 6 / span 7;
@@ -50,7 +50,7 @@ $_tile-size: 64px;
       display: block;
       width: 3 * $_tile-size - 2 * $margin;
       height: 3 * $_tile-size - 2 * $margin;
-      border: $_tile-size solid lightblue;
+      border: $_tile-size solid var(--lc4-theme-color-ui-6);
       border-radius: 50%;
       content: "";
       transform: translate(-$_tile-size + $margin, -$_tile-size + $margin);
